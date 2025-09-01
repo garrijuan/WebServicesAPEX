@@ -68,3 +68,10 @@ BEGIN
   COMMIT;
 END;
 ```
+
+## Variables
+
+
+
+## OAuth Security
+
