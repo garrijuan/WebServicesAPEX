@@ -166,6 +166,10 @@ END;
 /
 ```
 
+In the following image, we can observe how the web service is secured (green check) by applying the policy of roles and privileges associated with a specific client. Now, to make requests, it is necessary to generate a token using the Client_id and Client_secret obtained.
+![alt text](/images/protected.png "protected")
+
+
 ### Get Client_id y Client_secret
 
 This SQL query is used to retrieve information about an OAuth client registered in Oracle REST Data Services (ORDS) for the client named 'HR_DEPARTMENT'.
