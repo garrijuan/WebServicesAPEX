@@ -161,7 +161,13 @@ END;
 /
 ```
 
-consultar client_id y client_secret
+### Get Client_id y Client_secret
+
+This SQL query is used to retrieve information about an OAuth client registered in Oracle REST Data Services (ORDS) for the client named 'HR_DEPARTMENT'.
+
+-client_id: The unique client identifier string used by the client to authenticate against the OAuth authorization server.
+-client_secret: The secret string paired with the client_id, acting as a password to securely authenticate the client.
+
 ```sh
 SELECT id
       ,NAME
