@@ -40,7 +40,7 @@ END;
 
 ```sh
 BEGIN
-  ords.define_handler(p_module_name => 'integration',
+  ords.define_handler(p_module_name => 'Integration',
                       p_pattern     => 'CRUD',
                       p_method      => 'GET',
                       p_source_type => ords.source_type_plsql,
@@ -56,7 +56,7 @@ END;
 
 ```sh
 BEGIN
-  ords.define_handler(p_module_name => 'integration',
+  ords.define_handler(p_module_name => 'Integration',
                       p_pattern     => 'CRUD',
                       p_method      => 'POST',
                       p_source_type => ords.source_type_plsql,
@@ -69,11 +69,12 @@ BEGIN
 END;
 ```
 ![alt text](/images/POST.png "POST")
-## Variables
+
+## Parameters
 
 ```sh
 BEGIN
-  ords.define_parameter(p_module_name        => 'integration',
+  ords.define_parameter(p_module_name        => 'Integration',
                         p_pattern            => 'CRUD',
                         p_method             => 'POST',
                         p_name               => 'result_message',
@@ -84,9 +85,9 @@ BEGIN
                         p_comments           => 'result message');
   COMMIT;
 END;
-/	
+/
 BEGIN
-  ords.define_parameter(p_module_name        => 'integration',
+  ords.define_parameter(p_module_name        => 'Integration',
                         p_pattern            => 'CRUD',
                         p_method             => 'POST',
                         p_name               => 'STATUS-CODE',
@@ -98,7 +99,7 @@ BEGIN
   COMMIT;
 END;
 ```
-
+![alt text](/images/parameters.png "parameters")
 
 ## OAuth Security
 
@@ -116,7 +117,7 @@ BEGIN
   ords.create_role(p_role_name => 'HumanResourceManager');
 
   la_roles(1)         := 'HumanResourceManager';
-  la_priv_patterns(1) := '/integration/v1/CRUD';
+  la_priv_patterns(1) := '/Integration/v1/CRUD';
 
   -- Define a privilege linking the role to the URL pattern
   ords.define_privilege(
@@ -131,6 +132,8 @@ BEGIN
 END;
 /
 ```
+
+![alt text](/images/role.png "role")
 
 ### create Client
 

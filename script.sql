@@ -88,4 +88,66 @@ BEGIN
                       p_comments    => 'create New employee');
   COMMIT;
 END;
-//
+/
+
+--Parameters
+BEGIN
+  ords.define_parameter(p_module_name        => 'Integration',
+                        p_pattern            => 'CRUD',
+                        p_method             => 'POST',
+                        p_name               => 'result_message',
+                        p_bind_variable_name => 'pv_result',
+                        p_source_type        => 'RESPONSE',
+                        p_param_type         => 'STRING',
+                        p_access_method      => 'OUT',
+                        p_comments           => 'result message');
+  COMMIT;
+END;
+/
+BEGIN
+  ords.define_parameter(p_module_name        => 'Integration',
+                        p_pattern            => 'CRUD',
+                        p_method             => 'POST',
+                        p_name               => 'STATUS-CODE',
+                        p_bind_variable_name => 'pn_status',
+                        p_source_type        => 'HEADER',
+                        p_param_type         => 'INT',
+                        p_access_method      => 'OUT',
+                        p_comments           => 'result code message');
+  COMMIT;
+END;
+
+--Role&Privilege
+DECLARE
+  la_roles         owa.vc_arr;
+  la_priv_patterns owa.vc_arr;
+BEGIN
+  ords.create_role(p_role_name => 'HumanResourceManager');
+
+  la_roles(1)         := 'HumanResourceManager';
+  la_priv_patterns(1) := '/Integration/v1/CRUD';
+
+  -- Define a privilege linking the role to the URL pattern
+  ords.define_privilege(
+    p_privilege_name => 'integrations.humanresources.privilege',
+    p_roles          => la_roles,
+    p_patterns       => la_priv_patterns,
+    p_label          => 'Human Resources Management Access',
+    p_description    => 'Access to REST services for Human Resources CRUD operations'
+  );
+
+  COMMIT;
+END;
+/
+
+--CLient
+BEGIN
+  oauth.create_client(p_name => 'HR_DEPARTMENT',
+                      p_grant_type       => 'client_credentials',
+                      p_description      => 'Client with access to Request CRUD of Employee',
+                      p_support_email    => 'support@example.com',
+                      p_privilege_names  => NULL);
+
+  COMMIT;
+END;
+/
