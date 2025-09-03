@@ -2,6 +2,8 @@
 
 This repository contains the full deployment of a RESTful service built with Oracle APEX and Oracle REST Data Services (ORDS) for data integration
 
+This project focuses on the automated generation and management of REST API endpoints through code, emphasizing Infrastructure as Code (IaC) principles. By defining the RESTful services programmatically, it enables seamless integration with CI/CD pipelines, which ensures that any modifications or additions to the web services are version-controlled, tested, and deployed automatically. This approach provides full control over the development lifecycle of web services, from creation to maintenance, enforcing consistency and repeatability while reducing manual effort and errors. As a result, it facilitates scalable, auditable, and efficient management of API endpoints within modern DevOps workflows.
+
 ## Module
 ```sh
 BEGIN
@@ -25,8 +27,8 @@ END;
 ```sh
 BEGIN
 ords.define_template(p_module_name => 'Integration',
-p_pattern => 'CRUD',
-p_comments => 'CRUD in Web Services stands for Create, Read, Update, and Delete — the four fundamental operations performed on data resources through a web service.');
+                p_pattern => 'CRUD',
+                p_comments => 'CRUD in Web Services stands for Create, Read, Update, and Delete —                 the four fundamental operations performed on data resources through a web service.                ');
 COMMIT;
 END;
 ```
@@ -180,3 +182,5 @@ SELECT id
   FROM user_ords_clients c
  WHERE NAME = 'HR_DEPARTMENT';
 ```
+
+![alt text](/images/client_secret.png "client_secret")
