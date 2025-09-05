@@ -25,13 +25,11 @@ END;
 ---------------------------------------
 --Create GET Request
 BEGIN
-  ords.define_handler(p_module_name => 'integration',
+  ords.define_handler(p_module_name => 'Integration',
                       p_pattern     => 'CRUD',
                       p_method      => 'GET',
-                      p_source_type => ords.source_type_plsql,
-                      p_source      => 'DECLARE
-                        ....
-                        END;
+                      p_source_type => ords.source_type_query,
+                      p_source      => 'SELECT emp_id, first_name, last_name, email, phone, hire_date, job_title, department, salary, manager_id FROM employees;
                       ',
                       p_comments    => 'Get Employee info');
   COMMIT;
