@@ -1,4 +1,4 @@
-# RESTful Service in Oracle APEX - IaC 
+# RESTful Service in Oracle APEX - IaC 📝
 
 This repository contains the full deployment of a RESTful service built with Oracle APEX and Oracle REST Data Services (ORDS) for data integration
 
