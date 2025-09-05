@@ -1,4 +1,4 @@
-# RESTful Service in Oracle APEX - IaC
+# RESTful Service in Oracle APEX - IaC 
 
 This repository contains the full deployment of a RESTful service built with Oracle APEX and Oracle REST Data Services (ORDS) for data integration
 
@@ -188,3 +188,34 @@ SELECT id
 ```
 
 ![alt text](/images/client_secret.png "client_secret")
+
+
+## Additional Knowledge: How to Configure Postman and Generate an OAuth 2.0 Token
+
+![alt text](/images/errorAuth.png "errorAuth")
+
+1-Set the Type to OAuth 2.0 in Authorization tab.
+
+2-Click Get New Access Token.
+
+3-Fill in the token configuration fields:
+
+  **Token Name**: Give a descriptive name to your token.
+
+  **Grant Type**: Select the grant type your API supports (e.g., Client Credentials).
+
+  **Access Token URL**: The URL where the token is obtained, https://oracleapex.com/ords/jagarrido1/oauth/token.
+
+  **Client ID**: Your OAuth client ID.
+
+  **Client Secret**: Your OAuth client secret.
+
+  **Scope**: Leave empty or set as per your API requirements.
+
+  **Client Authentication**: Typically set to "Send as Basic Auth header".
+
+4-Click Request Token or Get New Access Token.
+
+If successful, Postman will receive an access token.
+
+![alt text](/images/token.png "token")
